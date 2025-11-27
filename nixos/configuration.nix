@@ -24,6 +24,7 @@
     enableRenice = true;
   };
 
+  security.polkit.enable = true;
   services.tuned = {
     enable = true;
     ppdSupport = true;
@@ -129,6 +130,8 @@
 
 
   # Enable touchpad support (enabled default in most desktopManager).
+  programs.obs-studio.enableVirtualCamera = true;
+
   services.xserver.libinput.enable = true;
   services.libinput.enable = true;
   services.flatpak.enable = true;
@@ -165,17 +168,27 @@
       heroic
       github-desktop
       github-copilot-cli
+      logseq
+      thonny
     ];
   };
   home-manager.users.audrey = { pkgs, ... }: {
     home.packages = [ pkgs.atool pkgs.httpie ];
     programs.bash.enable = true;
+
+    programs.obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+      ];
+    };
     home.stateVersion = "26.05"; # Please read the comment before changing.
     };
 
   # Install firefox.
   programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -208,6 +221,10 @@
     gpu-viewer
     mesa-demos
     virtualgl
+    nasm
+    gdb
+    gcc
+    cmake
 
     # gstreamer
     gst_all_1.gstreamer
