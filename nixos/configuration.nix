@@ -28,6 +28,8 @@
     enable = true;
     ppdSupport = true;
   };
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
   services.irqbalance.enable = true;
   services.preload.enable = true;
@@ -196,6 +198,16 @@
     mpris-scrobbler
     mprisence
     gh
+    kdePackages.qtsvg
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
+    ffmpegthumbnailer
+    libva-utils
+    vdpauinfo
+    vulkan-tools
+    gpu-viewer
+    mesa-demos
+    virtualgl
 
     # gstreamer
     gst_all_1.gstreamer
